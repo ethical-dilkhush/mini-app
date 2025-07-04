@@ -58,9 +58,6 @@ class SudokuApp {
             // Cache DOM elements
             this.cacheElements();
             
-            // Initialize Farcaster SDK
-            await this.initFarcasterSDK();
-            
             // Setup event listeners
             this.setupEventListeners();
             
@@ -70,11 +67,15 @@ class SudokuApp {
             // Start new game
             this.startNewGame();
             
+            // Initialize Farcaster SDK (this will call ready() when done)
+            await this.initFarcasterSDK();
+            
             // Hide loading screen and show app
             this.hideLoadingScreen();
             
         } catch (error) {
             console.error('Failed to initialize app after DOM:', error);
+            // Always hide loading screen even on error
             this.hideLoadingScreen();
         }
     }
@@ -160,6 +161,8 @@ class SudokuApp {
      * Initialize Farcaster SDK
      */
     async initFarcasterSDK() {
+        let sdkReady = false;
+        
         try {
             console.log('🚀 Initializing Farcaster Mini App SDK...');
             
@@ -187,12 +190,21 @@ class SudokuApp {
             console.log('📱 Calling sdk.actions.ready()...');
             await sdk.actions.ready();
             console.log('🎉 Mini App is ready and displayed!');
+            sdkReady = true;
             
         } catch (error) {
             console.error('❌ Failed to initialize Farcaster SDK:', error);
-            // Continue without SDK functionality but still hide loading screen
             console.log('⚠️ Continuing without SDK functionality');
         }
+        
+        // If SDK failed to load or ready() failed, we still need to show the app
+        if (!sdkReady) {
+            console.log('⚠️ SDK ready() not called, app may still be behind splash screen');
+            // In a real Mini App environment, this might leave the splash screen up
+            // but in a regular browser, the app will show normally
+        }
+        
+        return sdkReady;
     }
 
     /**
