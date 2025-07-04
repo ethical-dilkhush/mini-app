@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sudoku - Farcaster Mini App</title>
     <meta name="description" content="Play Sudoku puzzles in this Farcaster Mini App">
     
@@ -20,6 +20,14 @@
     <meta property="fc:frame:button:1" content="Play Sudoku">
     <meta property="fc:frame:button:1:action" content="link">
     <meta property="fc:frame:button:1:target" content="https://mini-app-roan-three.vercel.app">
+    
+    <!-- Additional meta tags for in-app opening -->
+    <meta name="fc:frame:button:1:action:type" content="launch">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://mini-app-roan-three.vercel.app/preview-image.png">
+    
+    <!-- Farcaster Mini App specific -->
+    <meta name="farcaster:miniapp" content="true">
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
