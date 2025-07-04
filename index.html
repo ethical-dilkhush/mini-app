@@ -13,6 +13,14 @@
     <meta property="og:url" content="https://mini-app-roan-three.vercel.app">
     <meta property="og:type" content="website">
     
+    <!-- Farcaster Frame Meta Tags -->
+    <meta property="fc:frame" content="vNext">
+    <meta property="fc:frame:image" content="https://mini-app-roan-three.vercel.app/preview-image.png">
+    <meta property="fc:frame:image:aspect_ratio" content="1.91:1">
+    <meta property="fc:frame:button:1" content="Play Sudoku">
+    <meta property="fc:frame:button:1:action" content="link">
+    <meta property="fc:frame:button:1:target" content="https://mini-app-roan-three.vercel.app/?fc=true">
+    
     <!-- Social Media Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://mini-app-roan-three.vercel.app/preview-image.png">
@@ -168,22 +176,34 @@
         function detectFarcasterEnvironment() {
             const userAgent = navigator.userAgent;
             const referrer = document.referrer;
+            const urlParams = new URLSearchParams(window.location.search);
+            const fcParam = urlParams.get('fc'); // Check for fc=true parameter
             
             const isInFarcaster = userAgent.includes('Farcaster') || 
                                 userAgent.includes('Warpcast') ||
                                 window.parent !== window || 
                                 referrer.includes('farcaster') ||
                                 referrer.includes('warpcast') ||
-                                referrer.includes('frame');
+                                referrer.includes('frame') ||
+                                fcParam === 'true'; // Frame button clicked
             
             console.log('🔍 Enhanced Farcaster Detection:', {
                 userAgent,
                 referrer,
+                fcParam,
                 isInFarcaster,
                 parentWindow: window.parent === window ? 'same' : 'different',
                 windowName: window.name,
-                opener: !!window.opener
+                opener: !!window.opener,
+                location: window.location.href
             });
+            
+            // Clean URL if fc parameter is present
+            if (fcParam === 'true') {
+                const cleanUrl = window.location.origin + window.location.pathname;
+                window.history.replaceState({}, document.title, cleanUrl);
+                console.log('🧹 Cleaned URL, removed fc parameter');
+            }
             
             // Add visual indicator if in Farcaster
             if (isInFarcaster) {
@@ -204,9 +224,48 @@
                             z-index: 1000;
                             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
                         `;
-                        indicator.textContent = '🌐 Farcaster';
+                        indicator.textContent = fcParam === 'true' ? '🎯 Frame → App' : '🌐 Farcaster';
                         header.style.position = 'relative';
                         header.appendChild(indicator);
+                        
+                        // Show success message if came from frame
+                        if (fcParam === 'true') {
+                            const successMsg = document.createElement('div');
+                            successMsg.style.cssText = `
+                                position: fixed;
+                                top: 20px;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                background: #10b981;
+                                color: white;
+                                padding: 10px 20px;
+                                border-radius: 20px;
+                                font-size: 14px;
+                                z-index: 10000;
+                                box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+                                animation: slideInOut 3s ease-in-out;
+                            `;
+                            successMsg.innerHTML = '🎉 Success! Opened in Farcaster webview';
+                            document.body.appendChild(successMsg);
+                            
+                            // Add animation
+                            const style = document.createElement('style');
+                            style.textContent = `
+                                @keyframes slideInOut {
+                                    0% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+                                    20% { opacity: 1; transform: translateX(-50%) translateY(0); }
+                                    80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+                                    100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+                                }
+                            `;
+                            document.head.appendChild(style);
+                            
+                            // Remove message after animation
+                            setTimeout(() => {
+                                successMsg.remove();
+                                style.remove();
+                            }, 3000);
+                        }
                     }
                 });
             }
