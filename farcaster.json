@@ -1,0 +1,23 @@
+{
+  "name": "Sudoku - Farcaster Mini App",
+  "iconUrl": "https://mini-app-roan-three.vercel.app/icon.png",
+  "subtitle": "Challenge your mind with classic Sudoku puzzles",
+  "description": "Play engaging Sudoku puzzles with multiple difficulty levels, smart hints, timer, scoring system, and social sharing. Perfect for puzzle enthusiasts who want to challenge their logic skills and compete with friends on Farcaster.",
+  "primaryCategory": "games",
+  "screenshotUrls": [
+    "https://mini-app-roan-three.vercel.app/screenshot1.png",
+    "https://mini-app-roan-three.vercel.app/screenshot2.png"
+  ],
+  "imageUrl": "https://mini-app-roan-three.vercel.app/preview-image.png",
+  "heroImageUrl": "https://mini-app-roan-three.vercel.app/preview-image.png",
+  "splashImageUrl": "https://mini-app-roan-three.vercel.app/preview-image.png",
+  "splashBackgroundColor": "#8b5cf6",
+  "tags": ["sudoku", "puzzle", "game", "brain-training", "logic", "numbers"],
+  "tagline": "Master the ultimate number puzzle game",
+  "buttonTitle": "🧩 Play Sudoku",
+  "ogTitle": "Sudoku - Farcaster Mini App",
+  "ogDescription": "Challenge your mind with classic Sudoku puzzles featuring multiple difficulty levels, smart hints, and social sharing",
+  "ogImageUrl": "https://mini-app-roan-three.vercel.app/preview-image.png",
+  "castShareUrl": "https://warpcast.com/~/compose?text=Just%20solved%20a%20Sudoku%20puzzle!%20🧩%20Try%20it%20yourself:%20https://mini-app-roan-three.vercel.app",
+  "homeUrl": "https://mini-app-roan-three.vercel.app"
+} 
