@@ -18,35 +18,37 @@ export default function handler(req, res) {
     // Parse the Frame button click data
     const { untrustedData, trustedData } = req.body;
     
-    // Log the button click for debugging
-    console.log('Frame button clicked:', {
+    // Log the webview launch
+    console.log('Webview launch requested:', {
       buttonIndex: untrustedData?.buttonIndex,
       fid: untrustedData?.fid,
-      messageHash: untrustedData?.messageHash,
-      network: untrustedData?.network,
       timestamp: untrustedData?.timestamp
     });
 
-    // Return HTML response for Frame that launches mini app
+    // Return HTML response that opens in webview
     const html = `
       <!DOCTYPE html>
       <html>
         <head>
-          <meta property="og:title" content="🧩 Sudoku - Launched!" />
-          <meta property="og:description" content="Launching Sudoku game in webview..." />
+          <meta property="og:title" content="🧩 Sudoku - Game Launched!" />
+          <meta property="og:description" content="Sudoku game is now opening in webview" />
           <meta property="og:image" content="https://mini-app-roan-three.vercel.app/preview-image.png" />
           
           <!-- Frame Meta Tags -->
           <meta name="fc:frame" content="vNext" />
           <meta name="fc:frame:image" content="https://mini-app-roan-three.vercel.app/preview-image.png" />
-          <meta name="fc:frame:button:1" content="🎮 Play Now" />
-          <meta name="fc:frame:button:1:action" content="post" />
-          <meta name="fc:frame:post_url" content="https://mini-app-roan-three.vercel.app/api/launch" />
+          <meta name="fc:frame:image:aspect_ratio" content="1.91:1" />
+          
+          <!-- Webview Launch -->
+          <script>
+            // Redirect to the app with fc parameter
+            window.location.href = 'https://mini-app-roan-three.vercel.app?fc=true';
+          </script>
         </head>
         <body>
-          <h1>🧩 Sudoku Game Launched!</h1>
-          <p>The game should open in Warpcast webview.</p>
-          <p>If it doesn't open automatically, <a href="https://mini-app-roan-three.vercel.app?fc=true">click here</a></p>
+          <h1>🧩 Launching Sudoku Game...</h1>
+          <p>The game is opening in webview...</p>
+          <p><a href="https://mini-app-roan-three.vercel.app?fc=true">Click here if not redirected</a></p>
         </body>
       </html>
     `;
@@ -54,7 +56,7 @@ export default function handler(req, res) {
     res.setHeader('Content-Type', 'text/html');
     res.status(200).send(html);
   } catch (error) {
-    console.error('Frame handler error:', error);
+    console.error('Webview handler error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 } 
