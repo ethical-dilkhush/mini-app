@@ -1,0 +1,39 @@
+{
+  "name": "sudoku-farcaster-mini-app",
+  "version": "1.0.0",
+  "description": "A fully-featured Sudoku puzzle game built as a Farcaster Mini App",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "start": "npx http-server -p 8000 -c-1 --cors",
+    "dev": "npx http-server -p 8000 -c-1 --cors -o",
+    "build": "echo 'Static files - no build needed'",
+    "deploy": "vercel --prod",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "sudoku",
+    "farcaster",
+    "mini-app",
+    "puzzle",
+    "game",
+    "social",
+    "web3"
+  ],
+  "author": "Farcaster Community",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/sudoku-mini-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/username/sudoku-mini-app/issues"
+  },
+  "homepage": "https://github.com/username/sudoku-mini-app#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+} 

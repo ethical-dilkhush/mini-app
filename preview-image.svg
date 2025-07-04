@@ -1,0 +1,98 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Phone mockup -->
+  <rect x="350" y="50" width="500" height="530" rx="30" fill="#ffffff" stroke="#374151" stroke-width="4"/>
+  
+  <!-- App header -->
+  <rect x="350" y="50" width="500" height="80" rx="30" fill="#8b5cf6"/>
+  <text x="600" y="105" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="white" text-anchor="middle">🧩 Sudoku</text>
+  
+  <!-- Grid container -->
+  <rect x="375" y="150" width="450" height="350" rx="8" fill="#f9fafb" stroke="#e5e7eb" stroke-width="2"/>
+  
+  <!-- Sudoku grid -->
+  <g transform="translate(400, 175)">
+    <!-- Grid lines -->
+    <rect width="400" height="300" fill="#374151" stroke="#374151" stroke-width="2"/>
+    
+    <!-- 9x9 grid of cells -->
+    <g>
+      <!-- Row 1 -->
+      <rect x="0" y="0" width="44" height="33" fill="white" stroke="#374151" stroke-width="1"/>
+      <rect x="44" y="0" width="44" height="33" fill="white" stroke="#374151" stroke-width="1"/>
+      <rect x="88" y="0" width="44" height="33" fill="white" stroke="#374151" stroke-width="1"/>
+      <rect x="133" y="0" width="44" height="33" fill="white" stroke="#374151" stroke-width="1"/>
+      <rect x="177" y="0" width="44" height="33" fill="white" stroke="#374151" stroke-width="1"/>
+      <rect x="221" y="0" width="44" height="33" fill="white" stroke="#374151" stroke-width="1"/>
+      <rect x="266" y="0" width="44" height="33" fill="white" stroke="#374151" stroke-width="1"/>
+      <rect x="310" y="0" width="44" height="33" fill="white" stroke="#374151" stroke-width="1"/>
+      <rect x="354" y="0" width="44" height="33" fill="white" stroke="#374151" stroke-width="1"/>
+      
+      <!-- Sample numbers -->
+      <text x="22" y="23" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#374151" text-anchor="middle">5</text>
+      <text x="66" y="23" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#374151" text-anchor="middle">3</text>
+      <text x="199" y="23" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#374151" text-anchor="middle">7</text>
+      
+      <!-- More grid sections for visual effect -->
+      <rect x="0" y="33" width="44" height="33" fill="white" stroke="#374151" stroke-width="1"/>
+      <rect x="44" y="33" width="44" height="33" fill="white" stroke="#374151" stroke-width="1"/>
+      <rect x="88" y="33" width="44" height="33" fill="white" stroke="#374151" stroke-width="1"/>
+      <rect x="133" y="33" width="44" height="33" fill="white" stroke="#374151" stroke-width="1"/>
+      <rect x="177" y="33" width="44" height="33" fill="white" stroke="#374151" stroke-width="1"/>
+      <rect x="221" y="33" width="44" height="33" fill="white" stroke="#374151" stroke-width="1"/>
+      
+      <text x="22" y="56" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#374151" text-anchor="middle">6</text>
+      <text x="155" y="56" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#374151" text-anchor="middle">1</text>
+      <text x="199" y="56" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#374151" text-anchor="middle">9</text>
+      <text x="243" y="56" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#374151" text-anchor="middle">5</text>
+    </g>
+    
+    <!-- Thick 3x3 box borders -->
+    <rect x="0" y="0" width="133" height="100" fill="none" stroke="#374151" stroke-width="3"/>
+    <rect x="133" y="0" width="133" height="100" fill="none" stroke="#374151" stroke-width="3"/>
+    <rect x="266" y="0" width="133" height="100" fill="none" stroke="#374151" stroke-width="3"/>
+  </g>
+  
+  <!-- Number pad preview -->
+  <g transform="translate(375, 520)">
+    <circle cx="25" cy="25" r="20" fill="#8b5cf6"/>
+    <text x="25" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">1</text>
+    
+    <circle cx="75" cy="25" r="20" fill="#6b7280"/>
+    <text x="75" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">2</text>
+    
+    <circle cx="125" cy="25" r="20" fill="#6b7280"/>
+    <text x="125" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">3</text>
+    
+    <circle cx="175" cy="25" r="20" fill="#6b7280"/>
+    <text x="175" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">4</text>
+    
+    <circle cx="225" cy="25" r="20" fill="#6b7280"/>
+    <text x="225" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">5</text>
+  </g>
+  
+  <!-- Title and description -->
+  <text x="100" y="200" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white">Sudoku</text>
+  <text x="100" y="250" font-family="Arial, sans-serif" font-size="24" fill="white">Farcaster Mini App</text>
+  
+  <text x="100" y="320" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.9)">🎮 Multiple difficulty levels</text>
+  <text x="100" y="350" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.9)">🧩 Smart puzzle generation</text>
+  <text x="100" y="380" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.9)">💡 Hint system</text>
+  <text x="100" y="410" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.9)">🏆 Social sharing</text>
+  <text x="100" y="440" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.9)">⏱️ Timer & scoring</text>
+  
+  <!-- Call to action -->
+  <rect x="925" y="450" width="200" height="60" rx="30" fill="#10b981"/>
+  <text x="1025" y="485" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Play Now!</text>
+  
+  <!-- Farcaster branding -->
+  <text x="925" y="550" font-family="Arial, sans-serif" font-size="16" fill="rgba(255,255,255,0.8)">Built for Farcaster</text>
+</svg> 
