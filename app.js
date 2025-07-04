@@ -52,6 +52,9 @@ class SudokuApp {
      */
     async initAfterDOM() {
         try {
+            // Check if running in Farcaster context
+            this.checkFarcasterContext();
+            
             // Cache DOM elements
             this.cacheElements();
             
@@ -73,6 +76,52 @@ class SudokuApp {
         } catch (error) {
             console.error('Failed to initialize app after DOM:', error);
             this.hideLoadingScreen();
+        }
+    }
+
+    /**
+     * Check if running in Farcaster context
+     */
+    checkFarcasterContext() {
+        const isInFarcaster = window.navigator.userAgent.includes('Farcaster') || 
+                            window.navigator.userAgent.includes('Warpcast') ||
+                            window.parent !== window || 
+                            window.location !== window.parent.location ||
+                            document.referrer.includes('farcaster') ||
+                            document.referrer.includes('warpcast');
+                            
+        console.log('🔍 Farcaster Context Check:');
+        console.log('- Running in Farcaster:', isInFarcaster);
+        console.log('- User Agent:', window.navigator.userAgent);
+        console.log('- Referrer:', document.referrer);
+        console.log('- Parent window:', window.parent === window ? 'same' : 'different');
+        
+        if (isInFarcaster) {
+            console.log('✅ App is running in Farcaster webview');
+            // Add a subtle indicator that it's running in Farcaster
+            setTimeout(() => {
+                const header = document.querySelector('.header-content');
+                if (header) {
+                    const indicator = document.createElement('div');
+                    indicator.style.cssText = `
+                        position: absolute; 
+                        top: 5px; 
+                        right: 5px; 
+                        background: #10b981; 
+                        color: white; 
+                        padding: 2px 6px; 
+                        border-radius: 10px; 
+                        font-size: 10px; 
+                        opacity: 0.8;
+                        z-index: 1000;
+                    `;
+                    indicator.textContent = '🌐 Farcaster';
+                    header.style.position = 'relative';
+                    header.appendChild(indicator);
+                }
+            }, 1000);
+        } else {
+            console.log('❌ App is NOT running in Farcaster webview');
         }
     }
 
