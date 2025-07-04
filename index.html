@@ -10,7 +10,7 @@
     <meta property="og:title" content="Sudoku - Farcaster Mini App">
     <meta property="og:description" content="Play Sudoku puzzles with multiple difficulty levels, hints, and social sharing">
     <meta property="og:image" content="https://mini-app-roan-three.vercel.app/preview-image.png">
-    <meta property="og:url" content="https://mini-app-roan-three.vercel.app/redirect.html">
+    <meta property="og:url" content="https://mini-app-roan-three.vercel.app">
     <meta property="og:type" content="website">
     
     <!-- Social Media Meta Tags -->
@@ -161,5 +161,68 @@
     <script type="module" src="https://esm.sh/@farcaster/miniapp-sdk"></script>
     <script src="sudoku-engine.js"></script>
     <script src="app.js"></script>
+    
+    <!-- Farcaster Detection Script -->
+    <script>
+        // Enhanced Farcaster detection
+        function detectFarcasterEnvironment() {
+            const userAgent = navigator.userAgent;
+            const referrer = document.referrer;
+            
+            const isInFarcaster = userAgent.includes('Farcaster') || 
+                                userAgent.includes('Warpcast') ||
+                                window.parent !== window || 
+                                referrer.includes('farcaster') ||
+                                referrer.includes('warpcast') ||
+                                referrer.includes('frame');
+            
+            console.log('🔍 Enhanced Farcaster Detection:', {
+                userAgent,
+                referrer,
+                isInFarcaster,
+                parentWindow: window.parent === window ? 'same' : 'different',
+                windowName: window.name,
+                opener: !!window.opener
+            });
+            
+            // Add visual indicator if in Farcaster
+            if (isInFarcaster) {
+                document.addEventListener('DOMContentLoaded', () => {
+                    const header = document.querySelector('.header-content');
+                    if (header) {
+                        const indicator = document.createElement('div');
+                        indicator.style.cssText = `
+                            position: absolute; 
+                            top: 5px; 
+                            right: 5px; 
+                            background: #10b981; 
+                            color: white; 
+                            padding: 2px 8px; 
+                            border-radius: 12px; 
+                            font-size: 11px; 
+                            opacity: 0.9;
+                            z-index: 1000;
+                            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                        `;
+                        indicator.textContent = '🌐 Farcaster';
+                        header.style.position = 'relative';
+                        header.appendChild(indicator);
+                    }
+                });
+            }
+            
+            return isInFarcaster;
+        }
+        
+        // Initialize detection
+        window.isInFarcaster = detectFarcasterEnvironment();
+        
+        // Prevent external navigation when in Farcaster
+        if (window.isInFarcaster) {
+            window.addEventListener('beforeunload', function(e) {
+                console.log('🚫 Preventing external navigation in Farcaster');
+            });
+        }
+    </script>
 </body>
 </html> 
