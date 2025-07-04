@@ -161,9 +161,13 @@ class SudokuApp {
      */
     async initFarcasterSDK() {
         try {
+            console.log('🚀 Initializing Farcaster Mini App SDK...');
+            
             // Import SDK from the CDN
             const { sdk } = await import('https://esm.sh/@farcaster/miniapp-sdk');
             this.sdk = sdk;
+            
+            console.log('✅ SDK imported successfully');
             
             // Get user context if available
             try {
@@ -171,17 +175,23 @@ class SudokuApp {
                 if (context && context.user) {
                     this.user = context.user;
                     this.updateUserInfo();
+                    console.log('👤 User context loaded:', this.user);
+                } else {
+                    console.log('ℹ️ No user context available');
                 }
             } catch (error) {
-                console.log('No user context available:', error);
+                console.log('⚠️ No user context available:', error);
             }
             
-            // Signal that the app is ready
+            // CRITICAL: Signal that the app is ready - this hides the loading screen
+            console.log('📱 Calling sdk.actions.ready()...');
             await sdk.actions.ready();
+            console.log('🎉 Mini App is ready and displayed!');
             
         } catch (error) {
-            console.error('Failed to initialize Farcaster SDK:', error);
-            // Continue without SDK functionality
+            console.error('❌ Failed to initialize Farcaster SDK:', error);
+            // Continue without SDK functionality but still hide loading screen
+            console.log('⚠️ Continuing without SDK functionality');
         }
     }
 
