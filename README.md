@@ -2,7 +2,7 @@
 
 A fully-featured Sudoku puzzle game built as a Farcaster Mini App with multiple difficulty levels, social sharing, and leaderboards.
 
-![Sudoku Mini App](https://img.shields.io/badge/Farcaster-Mini%20App-8b5cf6) ![Version](https://img.shields.io/badge/Version-1.0.0-green) ![License](https://img.shields.io/badge/License-MIT-blue)
+![Sudoku Mini App](https://img.shields.io/badge/Farcaster-Mini%20App-8b5cf6) ![Version](https://img.shields.io/badge/Version-1.0.0-green) ![License](https://img.shields.io/badge/License-MIT-blue)..
 
 ## 🌟 Features
 
